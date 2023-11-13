@@ -1,28 +1,34 @@
 package com.example.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.diceroller.databinding.ActivityMainBinding
-import java.util.*
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import java.util.Random
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
 
-        binding.rollButton.text = "Let's roll"
-        binding.rollButton.setOnClickListener {
-            rollDice()
+        setContent {
+
+            var dieImage by rememberSaveable {
+                mutableIntStateOf(R.drawable.ic_dice)
+            }
+
+            MainScreen(
+                diceImage = dieImage,
+                onClickRollDiceButton = { dieImage = rollDice()}
+                )
         }
     }
 
-    private fun rollDice() {
-        val drawableResource = when (Random().nextInt(6) + 1) {
+    private fun rollDice(): Int {
+        val dieDrawable = when (Random().nextInt(6) + 1) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -30,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        binding.diceImage.setImageResource(drawableResource)
+        return dieDrawable
     }
-
 }
