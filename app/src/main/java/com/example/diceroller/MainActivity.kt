@@ -24,24 +24,22 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             var dieImage by rememberSaveable {
-                mutableIntStateOf(R.drawable.ic_dice)
-            }
-
-            var guessedNumber by remember {
-                mutableIntStateOf(0)
+                mutableIntStateOf(R.drawable.empty_dice)
             }
 
             var hasWon: Boolean? by remember {
-                mutableStateOf(null)
+                mutableStateOf(false)
             }
 
             MainScreen(
                 Modifier.padding(8.dp),
                 diceImage = dieImage,
-                onClickRollDiceButton = { rollDice() ; dieImage = setDieImage(randomDieNumber) },
-                checkGuessedNumber = { guessedNumber = it; hasWon = isNumberCorrectlyGuessed(guessedNumber) },
-                hasWon = hasWon,
-                onError = { hasWon = it }
+                onClickRollDiceButton = {
+                    rollDice()
+                    dieImage = setDieImage(randomDieNumber)
+                    hasWon = checkGuessedNumber(it)
+                },
+                hasWon = hasWon
             )
         }
     }
@@ -59,5 +57,19 @@ class MainActivity : ComponentActivity() {
         else -> R.drawable.dice_6
     }
 
-    private fun isNumberCorrectlyGuessed(guessedNumber: Int, dieNumber: Int = randomDieNumber) = guessedNumber == dieNumber
+    private fun checkGuessedNumber(
+        guessedNumber: String,
+        dieNumber: Int = randomDieNumber,
+    ): Boolean? {
+        return try {
+            val number = guessedNumber.toInt()
+            validateNumber(number, dieNumber)
+        } catch (e: NumberFormatException) {
+            null
+        }
+    }
+
+    private fun validateNumber(guessedNumber: Int, dieNumber: Int): Boolean? {
+        return if (guessedNumber < 1 || guessedNumber > 6) null else guessedNumber == dieNumber
+    }
 }
