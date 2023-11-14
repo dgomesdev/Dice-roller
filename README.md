@@ -3,9 +3,8 @@ Training project made for an online course of "Udacity". As this lesson was just
 
 ![Main screen](https://github.com/dgomesdev/Dice-roller/assets/114317159/8bc7198b-834f-4f9b-8511-83088e5be21d)
 
-### Technologies
+### Used stacks
 
-Exemplo:
 * [Android](https://developer.android.com/)
 * [Kotlin](https://kotlinlang.org/)
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
