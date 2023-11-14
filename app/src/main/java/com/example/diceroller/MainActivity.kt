@@ -3,7 +3,10 @@ package com.example.diceroller
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.diceroller.theme.DiceRollerAppTheme
 import java.util.Random
 
 class MainActivity : ComponentActivity() {
@@ -31,16 +35,23 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf(false)
             }
 
-            MainScreen(
-                Modifier.padding(8.dp),
-                diceImage = dieImage,
-                onClickRollDiceButton = {
-                    rollDice()
-                    dieImage = setDieImage(randomDieNumber)
-                    hasWon = checkGuessedNumber(it)
-                },
-                hasWon = hasWon
-            )
+            DiceRollerAppTheme {
+                Surface(
+                    Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    MainScreen(
+                        Modifier.padding(8.dp),
+                        diceImage = dieImage,
+                        onClickRollDiceButton = {
+                            rollDice()
+                            dieImage = setDieImage(randomDieNumber)
+                            hasWon = checkGuessedNumber(it)
+                        },
+                        hasWon = hasWon
+                    )
+                }
+            }
         }
     }
 

@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainScreen(
@@ -48,7 +49,7 @@ fun MainScreen(
                 hasWon = hasWon
             )
         }
-        Text("Try to guess the number", modifier = modifier.padding(8.dp))
+        Text("Try to guess the number", modifier = modifier.padding(8.dp), fontSize = 24.sp)
         TextField(
             value = guessedNumber,
             onValueChange = { guessedNumber = it },
