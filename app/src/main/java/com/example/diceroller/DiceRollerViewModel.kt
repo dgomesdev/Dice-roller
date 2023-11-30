@@ -8,7 +8,7 @@ import kotlin.random.Random
 
 class DiceRollerViewModel: ViewModel() {
 
-    private var randomDieNumber = 0
+    var randomDieNumber = 0
 
     private val _dieImage = mutableIntStateOf(R.drawable.empty_dice)
     val dieImage: State<Int> = _dieImage
@@ -40,7 +40,7 @@ class DiceRollerViewModel: ViewModel() {
         }
     }
 
-    private fun validateNumber(guessedNumber: Int, dieNumber: Int): Boolean {
+    fun validateNumber(guessedNumber: Int, dieNumber: Int): Boolean {
         return guessedNumber in 1..6 && guessedNumber == dieNumber
     }
 }
