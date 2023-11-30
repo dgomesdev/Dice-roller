@@ -15,7 +15,7 @@ Training project made for an online course of "Udacity". As this lesson was just
 
 ### How to run the app
 
-Download it [here](https://github.com/dgomesdev/Dice-roller/releases/download/v1.0/DiceRoller.aab) and install in your Android phone
+Download it [here](https://github.com/dgomesdev/Dice-roller/releases/download/v.1.1/DiceRoller.aab) and install in your Android phone
 
 ## Next steps
 
