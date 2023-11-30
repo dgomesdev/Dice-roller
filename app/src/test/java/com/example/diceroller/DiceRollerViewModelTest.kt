@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import kotlin.random.Random
 
-const val TAG = "VIEWMODEL TEST"
-
 class DiceRollerViewModelTest {
 
     private lateinit var diceRollerViewModel: DiceRollerViewModel
@@ -83,8 +81,8 @@ class DiceRollerViewModelTest {
     fun compareNumbers_returnInvalidNumber() {
         //GIven
         diceRollerViewModel = DiceRollerViewModel()
-        val fakeGuessedNumber = 7
-        val fakeRandomDieNumber = 1
+        val fakeGuessedNumber = 0
+        val fakeRandomDieNumber = 0
 
         //When
         val isValid = diceRollerViewModel.validateNumber(fakeGuessedNumber, fakeRandomDieNumber)

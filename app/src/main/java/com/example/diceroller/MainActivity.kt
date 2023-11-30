@@ -31,9 +31,9 @@ class MainActivity : ComponentActivity() {
                         Modifier.padding(8.dp),
                         diceImage = dieImage,
                         onClickRollDiceButton = {
-                            viewModel::setDieNumber
-                            viewModel::setDieImage
-                            viewModel::checkGuessedNumber
+                            viewModel.setDieNumber()
+                            viewModel.setDieImage()
+                            viewModel.checkGuessedNumber(it)
                         },
                         hasWon = hasWon
                     )

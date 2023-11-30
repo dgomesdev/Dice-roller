@@ -40,7 +40,8 @@ class DiceRollerViewModel: ViewModel() {
         }
     }
 
-    fun validateNumber(guessedNumber: Int, dieNumber: Int): Boolean {
-        return guessedNumber in 1..6 && guessedNumber == dieNumber
+    fun validateNumber(guessedNumber: Int, dieNumber: Int): Boolean? {
+        if (guessedNumber !in 1..6) return null
+        return guessedNumber == dieNumber
     }
 }
