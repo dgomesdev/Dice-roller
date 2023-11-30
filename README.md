@@ -19,7 +19,7 @@ Download it [here](https://github.com/dgomesdev/Dice-roller/releases/download/v1
 
 ## Next steps
 
-Add the dark theme
+Add compose instrumented tests
 
 ## Screenshots
 
